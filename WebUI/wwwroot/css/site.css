@@ -1,0 +1,30 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+section{
+    padding:0.5rem;
+}
+section.none{
+    padding:0;
+}
+.list-group li .progress {
+    position: absolute;
+    width: 100%;
+    bottom: -1px;
+    height: 1px;
+    left: 0;
+    border-radius: 0;
+    z-index: 1
+}
+.bt-download {
+    height: 100%;
+    padding: 0;
+    width: 65px;
+    position: absolute;
+    right: 0px;
+    padding-right: 25px;
+    text-align: right;
+}

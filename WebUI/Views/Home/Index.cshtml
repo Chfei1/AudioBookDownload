@@ -1,0 +1,26 @@
+﻿@model BookSeriesModel
+<section>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="书籍ID" aria-label="书籍ID" v-model="bookId">
+        <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="button" v-on:click="getinfo">Search</button>
+        </div>
+    </div>
+</section>
+
+<section class="p-0">
+    @*<h3>@BookSeries.BookName</h3>*@
+    <ul class="list-group list-group-flush" v-if="book!=undefined">
+        <li v-for="item in book.seriesList" class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{item.name}} {{item.iD}}</span>
+            <button v-show="item.progress<100" class="btn btn-link btn-sm bt-download" v-on:click="download(item)"><span class="oi oi-data-transfer-download"></span></button>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" v-bind:style="{width:item.progress+'%'}" aria-valuenow="{{item.progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </li>
+    </ul>
+</section>
+
+@section scripts{
+    <script src="~/js/main.js"></script>
+}
