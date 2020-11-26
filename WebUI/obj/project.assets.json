@@ -20,10 +20,21 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Downloader/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Downloader.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Downloader.dll": {}
+        }
+      },
       "DownLoadMP3/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "Downloader": "1.0.0",
           "HtmlAgilityPack": "1.11.28",
           "Newtonsoft.Json": "12.0.3"
         },
@@ -116,6 +127,11 @@
         "packageIcon.png"
       ]
     },
+    "Downloader/1.0.0": {
+      "type": "project",
+      "path": "../Downloader/Downloader.csproj",
+      "msbuildProject": "../Downloader/Downloader.csproj"
+    },
     "DownLoadMP3/1.0.0": {
       "type": "project",
       "path": "../DownLoadMP3/DownLoadMP3.csproj",
@@ -124,7 +140,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "DownLoadMP3 >= 1.0.0"
+      "DownLoadMP3 >= 1.0.0",
+      "Downloader >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -157,6 +174,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "E:\\源码\\DownloadMp3\\Downloader\\Downloader.csproj": {
+              "projectPath": "E:\\源码\\DownloadMp3\\Downloader\\Downloader.csproj"
+            },
             "E:\\源码\\DownloadMp3\\DownLoadMP3\\DownLoadMP3.csproj": {
               "projectPath": "E:\\源码\\DownloadMp3\\DownLoadMP3\\DownLoadMP3.csproj"
             }

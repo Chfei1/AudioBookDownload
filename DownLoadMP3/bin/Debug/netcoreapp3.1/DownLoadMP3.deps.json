@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "DownLoadMP3/1.0.0": {
         "dependencies": {
+          "Downloader": "1.0.0",
           "HtmlAgilityPack": "1.11.28",
           "Newtonsoft.Json": "12.0.3",
           "CsharpHttpHelperCore": "1.0.0.0"
@@ -30,6 +31,11 @@
             "assemblyVersion": "12.0.0.0",
             "fileVersion": "12.0.3.23909"
           }
+        }
+      },
+      "Downloader/1.0.0": {
+        "runtime": {
+          "Downloader.dll": {}
         }
       },
       "CsharpHttpHelperCore/1.0.0.0": {
@@ -61,6 +67,11 @@
       "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "path": "newtonsoft.json/12.0.3",
       "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "Downloader/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "CsharpHttpHelperCore/1.0.0.0": {
       "type": "reference",

@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Downloader\Downloader.csproj" />
     <ProjectReference Include="..\DownLoadMP3\DownLoadMP3.csproj" />
   </ItemGroup>
 

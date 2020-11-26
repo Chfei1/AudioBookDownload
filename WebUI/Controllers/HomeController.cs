@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Downloader;
 using Masuit.Tools.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -19,7 +21,11 @@ namespace WebUI.Controllers
     {
         private readonly IHubContext<MsgHUB> _hubContext;
         private readonly ToolService _toolService;
-
+        private static List<BookSeriesModel> _bookSeries = new List<BookSeriesModel>();
+        private static List<BookSeriesItemModel> _downBookSeries = new List<BookSeriesItemModel>();
+        private static int MaxThread = 4;
+        private static int RunThread = 0;
+        private static bool IsRun = false;
         public HomeController(
             IHubContext<MsgHUB> hubContext,
             ToolService toolService)
@@ -36,21 +42,70 @@ namespace WebUI.Controllers
         public JsonResult GetBookinfo(string id)
         {
             BookSeriesModel book = _toolService.GetBookSeriesList(id);
+            _bookSeries.Add(book);
             return Json(book);
         }
         [Route("api/download")]
         [HttpPost]
-        public JsonResult Download(BookSeriesItemModel model)
+        public JsonResult Download(string bookId, string itemId)
         {
-            string SavePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "download", model.BookId);
-            _toolService.Download(model, SavePath, (e) =>
+            BookSeriesModel book = _bookSeries.FirstOrDefault(a => a.BookId == bookId);
+            if (book != null)
             {
-                TotalProgressChanged(model, e);
-            }, (e) =>
-            {
-                FileDownloadFinished(model, e);
-            });
+                BookSeriesItemModel item = book.SeriesList.FirstOrDefault(a => a.ID == itemId);
+                if (item != null)
+                {
+                    item.Status = DownloadStatus.Waiting;
+                    _downBookSeries.Add(item);
+                    if (!IsRun)
+                    {
+                        IsRun = true;
+                        Task.Run(() =>
+                        {
+                            _Download();
+                        });
+                    }
+                }
+
+            }
             return Json(true);
+        }
+
+        private void _Download()
+        {
+            for (int i = 0; i < _downBookSeries.Count; i++)
+            {
+                var item = _downBookSeries[i];
+                item.Status = DownloadStatus.Downing;
+                string SavePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "download", item.BookId);
+                _toolService.Download(item, SavePath, (down, e) =>
+                {
+                    item.Progress = e.ProgressPercentage;
+                }, (down, e) =>
+                {
+                    item.Progress = 100;
+                    item.Status = DownloadStatus.Finished;
+                    RunThread--;
+                });
+                RunThread++;
+                while (RunThread >= MaxThread)
+                {
+                    Task.Delay(1000);
+                }
+            }
+            IsRun = false;
+        }
+        [Route("api/getprogress")]
+        [HttpGet]
+        public JsonResult GetDownloadProgress(DownloadStatus status = DownloadStatus.None)
+        {
+            List<BookSeriesItemModel> items = new List<BookSeriesItemModel>();
+            items = _downBookSeries;
+            if (status != DownloadStatus.None)
+            {
+                items = _downBookSeries.Where(a => a.Status == status).ToList();
+            }
+            return Json(items);
         }
 
         [Route("api/getdirectory")]
@@ -65,14 +120,17 @@ namespace WebUI.Controllers
             return Json(list);
         }
 
-        private void TotalProgressChanged(BookSeriesItemModel item, MultiThreadDownloader downloader)
+        private void TotalProgressChanged(BookSeriesItemModel item, DownloadProgressChangedEventArgs downloader)
         {
-            item.Progress = downloader.TotalProgress;
-            _hubContext.Clients.All.SendAsync("msg", item);
+            item.Progress = downloader.ProgressPercentage;
+            //_hubContext.Clients.All.SendAsync("msg", item);
+
         }
-        private void FileDownloadFinished(BookSeriesItemModel item, MultiThreadDownloader downloader)
+        private void FileDownloadFinished(BookSeriesItemModel item, AsyncCompletedEventArgs e)
         {
             item.Progress = 100;
+            RunThread--;
         }
+
     }
 }

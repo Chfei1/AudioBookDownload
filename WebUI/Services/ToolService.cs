@@ -5,21 +5,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Downloader;
+using System.ComponentModel;
 
 namespace WebUI.Serivces
 {
     public class ToolService
     {
-        public static Dictionary<string, float> DonLoadProgress { get; set; }
+        public static Dictionary<string, double> DonLoadProgress { get; set; }
         private readonly IBookService _bookService;
 
         public ToolService(IBookService bookService)
         {
-            DonLoadProgress = new Dictionary<string, float>();
+            DonLoadProgress = new Dictionary<string, double>();
             _bookService = bookService;
 
         }
-        public float GetProgress(string ID)
+        public double GetProgress(string ID)
         {
             if (DonLoadProgress.ContainsKey(ID))
             {
@@ -41,21 +43,21 @@ namespace WebUI.Serivces
 
             return BookSeriesModel.Convert(book);
         }
-        public void Download(BookSeriesItemModel bookitem,string Savepath, Action<MultiThreadDownloader> TotalProgressChanged = null, Action<MultiThreadDownloader> FileDownloadFinished = null)
+        public void Download(BookSeriesItemModel bookitem,string Savepath, Action<DownloadService,DownloadProgressChangedEventArgs> TotalProgressChanged = null, Action<DownloadService, AsyncCompletedEventArgs> FileDownloadFinished = null)
         {
             _bookService.DownloadBook(bookitem.ToBookSeriesItem(), Savepath, TotalProgressChanged, FileDownloadFinished);
         }
 
-        private void TotalProgressChanged(BookSeriesItemModel item, MultiThreadDownloader downloader)
+        private void TotalProgressChanged(BookSeriesItemModel item, DownloadService downloader, DownloadProgressChangedEventArgs e)
         {
-            item.Progress = downloader.TotalProgress;
+            item.Progress = e.ProgressPercentage;
             if (!DonLoadProgress.ContainsKey(item.ID))
             {
                 DonLoadProgress.Add(item.ID, 0);
             }
-            DonLoadProgress[item.ID] = downloader.TotalProgress;
+            DonLoadProgress[item.ID] = e.ProgressPercentage;
         }
-        private void FileDownloadFinished(BookSeriesItemModel item, MultiThreadDownloader downloader)
+        private void FileDownloadFinished(BookSeriesItemModel item, DownloadService downloader, AsyncCompletedEventArgs e)
         {
             item.Progress = 100;
 

@@ -1,4 +1,5 @@
-﻿using DownLoadMP3;
+﻿using Downloader;
+using DownLoadMP3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,8 +55,9 @@ namespace WebUI.Models
         public string BookId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
-        public float Progress { get; set; }
+        public double Progress { get; set; }
 
+        public DownloadStatus Status { get; set; }
         internal BookSeriesItem ToBookSeriesItem()
         {
             BookSeriesItem model = new BookSeriesItem();

@@ -193,7 +193,7 @@ namespace DownLoadMP3
         }
 
         static void log(string msg)
-        {
+        { 
             Console.Write(msg);
         }
 

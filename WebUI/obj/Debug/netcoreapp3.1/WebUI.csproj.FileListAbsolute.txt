@@ -38,3 +38,5 @@ E:\源码\DownloadMp3\WebUI\obj\Debug\netcoreapp3.1\staticwebassets\WebUI.Static
 E:\源码\DownloadMp3\WebUI\obj\Debug\netcoreapp3.1\WebUI.dll
 E:\源码\DownloadMp3\WebUI\obj\Debug\netcoreapp3.1\WebUI.pdb
 E:\源码\DownloadMp3\WebUI\obj\Debug\netcoreapp3.1\WebUI.genruntimeconfig.cache
+E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\Downloader.dll
+E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\Downloader.pdb

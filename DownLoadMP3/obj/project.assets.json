@@ -19,6 +19,16 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
+      },
+      "Downloader/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Downloader.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Downloader.dll": {}
+        }
       }
     }
   },
@@ -101,10 +111,16 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "Downloader/1.0.0": {
+      "type": "project",
+      "path": "../Downloader/Downloader.csproj",
+      "msbuildProject": "../Downloader/Downloader.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Downloader >= 1.0.0",
       "HtmlAgilityPack >= 1.11.28",
       "Newtonsoft.Json >= 12.0.3"
     ]
@@ -138,7 +154,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\源码\\DownloadMp3\\Downloader\\Downloader.csproj": {
+              "projectPath": "E:\\源码\\DownloadMp3\\Downloader\\Downloader.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

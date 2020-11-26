@@ -25,6 +25,7 @@
       "WebUI/1.0.0": {
         "dependencies": {
           "DownLoadMP3": "1.0.0",
+          "Downloader": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -337,8 +338,17 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
+      "Downloader/1.0.0": {
+        "runtime": {
+          "Downloader.dll": {}
+        },
+        "compile": {
+          "Downloader.dll": {}
+        }
+      },
       "DownLoadMP3/1.0.0": {
         "dependencies": {
+          "Downloader": "1.0.0",
           "HtmlAgilityPack": "1.11.28",
           "Newtonsoft.Json": "12.0.3"
         },
@@ -2070,6 +2080,11 @@
       "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "path": "newtonsoft.json/12.0.3",
       "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "Downloader/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "DownLoadMP3/1.0.0": {
       "type": "project",
