@@ -1,0 +1,82 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "DownLoadMP3/1.0.0": {
+        "dependencies": {
+          "Downloader": "1.0.0",
+          "HtmlAgilityPack": "1.11.28",
+          "Newtonsoft.Json": "12.0.3",
+          "CsharpHttpHelperCore": "1.0.0.0"
+        },
+        "runtime": {
+          "DownLoadMP3.dll": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.28": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.28.0",
+            "fileVersion": "1.11.28.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
+      "Downloader/1.0.0": {
+        "runtime": {
+          "Downloader.dll": {}
+        }
+      },
+      "CsharpHttpHelperCore/1.0.0.0": {
+        "runtime": {
+          "CsharpHttpHelperCore.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DownLoadMP3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HtmlAgilityPack/1.11.28": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aclp8f2p+xeNNR02qfMu2r4K49sNWE13VDHiLpv9SoKBDIwwy62HQIMnT+oeuyFquQRzwSGD3vUWUmtOT+eNzQ==",
+      "path": "htmlagilitypack/1.11.28",
+      "hashPath": "htmlagilitypack.1.11.28.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "Downloader/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CsharpHttpHelperCore/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

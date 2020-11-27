@@ -1,7 +1,6 @@
 E:\源码\DownloadMp3\WebUI\obj\Debug\netcoreapp3.1\WebUI.csprojAssemblyReference.cache
 E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\appsettings.json
-E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\tsconfig.json
 E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\WebUI.exe
 E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\WebUI.deps.json
@@ -40,3 +39,4 @@ E:\源码\DownloadMp3\WebUI\obj\Debug\netcoreapp3.1\WebUI.pdb
 E:\源码\DownloadMp3\WebUI\obj\Debug\netcoreapp3.1\WebUI.genruntimeconfig.cache
 E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\Downloader.dll
 E:\源码\DownloadMp3\WebUI\bin\Debug\netcoreapp3.1\Downloader.pdb
+E:\源码\DownloadMp3\WebUI\obj\Debug\netcoreapp3.1\scopedcss\bundle\WebUI.styles.css

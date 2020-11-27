@@ -1,0 +1,9 @@
+E:\源码\DownloadMp3\Downloader\bin\Release\netcoreapp3.1\Downloader.deps.json
+E:\源码\DownloadMp3\Downloader\bin\Release\netcoreapp3.1\Downloader.dll
+E:\源码\DownloadMp3\Downloader\bin\Release\netcoreapp3.1\Downloader.pdb
+E:\源码\DownloadMp3\Downloader\obj\Release\netcoreapp3.1\Downloader.csprojAssemblyReference.cache
+E:\源码\DownloadMp3\Downloader\obj\Release\netcoreapp3.1\Downloader.AssemblyInfoInputs.cache
+E:\源码\DownloadMp3\Downloader\obj\Release\netcoreapp3.1\Downloader.AssemblyInfo.cs
+E:\源码\DownloadMp3\Downloader\obj\Release\netcoreapp3.1\Downloader.csproj.CoreCompileInputs.cache
+E:\源码\DownloadMp3\Downloader\obj\Release\netcoreapp3.1\Downloader.dll
+E:\源码\DownloadMp3\Downloader\obj\Release\netcoreapp3.1\Downloader.pdb

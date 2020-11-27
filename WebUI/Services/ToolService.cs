@@ -43,9 +43,9 @@ namespace WebUI.Serivces
 
             return BookSeriesModel.Convert(book);
         }
-        public void Download(BookSeriesItemModel bookitem,string Savepath, Action<DownloadService,DownloadProgressChangedEventArgs> TotalProgressChanged = null, Action<DownloadService, AsyncCompletedEventArgs> FileDownloadFinished = null)
+        public async Task Download(BookSeriesItemModel bookitem,string Savepath, Action<DownloadService,DownloadProgressChangedEventArgs> TotalProgressChanged = null, Action<DownloadService, AsyncCompletedEventArgs> FileDownloadFinished = null)
         {
-            _bookService.DownloadBook(bookitem.ToBookSeriesItem(), Savepath, TotalProgressChanged, FileDownloadFinished);
+           await _bookService.DownloadBook(bookitem.ToBookSeriesItem(), Savepath, TotalProgressChanged, FileDownloadFinished);
         }
 
         private void TotalProgressChanged(BookSeriesItemModel item, DownloadService downloader, DownloadProgressChangedEventArgs e)

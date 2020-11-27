@@ -388,7 +388,7 @@ namespace Downloader
                 Package.BytesReceived += readSize;
                 chunk.Position += readSize;
                 bytesToReceiveCount = chunk.Length - chunk.Position;
-
+                await Task.Delay(500);
                 OnChunkDownloadProgressChanged(new DownloadProgressChangedEventArgs(chunk.Id, chunk.Length, chunk.Position, DownloadSpeed));
                 OnDownloadProgressChanged(new DownloadProgressChangedEventArgs(MainProgressName, Package.TotalFileSize, Package.BytesReceived, DownloadSpeed));
             }
@@ -416,7 +416,7 @@ namespace Downloader
                 Package.BytesReceived += readSize;
                 chunk.Position += readSize;
                 bytesToReceiveCount = chunk.Length - chunk.Position;
-
+                await Task.Delay(500);
                 OnChunkDownloadProgressChanged(new DownloadProgressChangedEventArgs(chunk.Id, chunk.Length, chunk.Position, DownloadSpeed));
                 OnDownloadProgressChanged(new DownloadProgressChangedEventArgs(MainProgressName, Package.TotalFileSize, Package.BytesReceived, DownloadSpeed));
             }

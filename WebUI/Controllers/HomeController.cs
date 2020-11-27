@@ -23,7 +23,7 @@ namespace WebUI.Controllers
         private readonly ToolService _toolService;
         private static List<BookSeriesModel> _bookSeries = new List<BookSeriesModel>();
         private static List<BookSeriesItemModel> _downBookSeries = new List<BookSeriesItemModel>();
-        private static int MaxThread = 4;
+        private static int MaxThread = 1;
         private static int RunThread = 0;
         private static bool IsRun = false;
         public HomeController(
@@ -60,9 +60,9 @@ namespace WebUI.Controllers
                     if (!IsRun)
                     {
                         IsRun = true;
-                        Task.Run(() =>
+                        Task.Run(async () =>
                         {
-                            _Download();
+                            await _Download();
                         });
                     }
                 }
@@ -71,27 +71,30 @@ namespace WebUI.Controllers
             return Json(true);
         }
 
-        private void _Download()
+        private async Task _Download()
         {
-            for (int i = 0; i < _downBookSeries.Count; i++)
+            while (_downBookSeries.Count > 0)
             {
-                var item = _downBookSeries[i];
+                var item = _downBookSeries.First();
+
+                if (item.Status != DownloadStatus.Waiting)
+                {
+                    continue;
+                }
                 item.Status = DownloadStatus.Downing;
                 string SavePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "download", item.BookId);
-                _toolService.Download(item, SavePath, (down, e) =>
+                await _toolService.Download(item, SavePath, (down, e) =>
                 {
                     item.Progress = e.ProgressPercentage;
+                    _hubContext.Clients.All.SendAsync("downing", item);
                 }, (down, e) =>
                 {
                     item.Progress = 100;
                     item.Status = DownloadStatus.Finished;
-                    RunThread--;
+                    _hubContext.Clients.All.SendAsync("finished", item);
+                    _downBookSeries.Remove(item);
                 });
-                RunThread++;
-                while (RunThread >= MaxThread)
-                {
-                    Task.Delay(1000);
-                }
+                await Task.Delay(1000);
             }
             IsRun = false;
         }

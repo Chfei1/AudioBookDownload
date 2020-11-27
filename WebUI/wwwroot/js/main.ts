@@ -82,17 +82,24 @@ var app = new Vue({
         }
     }
 })
-app.getproggress(DownloadStatus.None);
-//declare let signalR;
-//const connection = new signalR.HubConnectionBuilder()
-//    .withUrl("/msghub")
-//    .configureLogging(signalR.LogLevel.Information)
-//    .build();
+//app.getproggress(DownloadStatus.Downing);
+declare let signalR;
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/msghub")
+    .configureLogging(signalR.LogLevel.Information)
+    .build();
 
-//connection.on("msg", (item: BookSeriesItemModel) => {
-//    var list = app.book.seriesList.filter(a => a.id == item.id);
-//    if (list.length > 0) {
-//        list[0].progress = item.progress;
-//    }
-//});
-//connection.start();
+connection.on("downing", (item: BookSeriesItemModel) => {
+    var list = app.book.seriesList.filter(a => a.id == item.id);
+    if (list.length > 0) {
+        list[0].progress = item.progress;
+    }
+});
+
+connection.on("finished", (item: BookSeriesItemModel) => {
+    var list = app.book.seriesList.filter(a => a.id == item.id);
+    if (list.length > 0) {
+        list[0].progress = item.progress;
+    }
+});
+connection.start();

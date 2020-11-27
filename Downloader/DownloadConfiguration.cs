@@ -13,10 +13,10 @@ namespace Downloader
             ChunkCount = 1; // file parts to download
             Timeout = 1000; // timeout (millisecond) per stream block reader
             OnTheFlyDownload = false; // caching in-memory mode
-            BufferBlockSize = 8000; // usually, hosts support max to 8000 bytes
+            BufferBlockSize = 1024 * 1024 * 2; // usually, hosts support max to 8000 bytes
             MaximumBytesPerSecond = ThrottledStream.Infinite; // No-limitation in download speed
             RequestConfiguration = new RequestConfiguration(); // Default requests configuration
-            TempDirectory = Path.GetTempPath(); // Default chunks path
+            TempDirectory = "C:\\temp"; // Default chunks path
             SaveDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "downloads");
             RequestConfiguration = new RequestConfiguration
             {
@@ -107,7 +107,7 @@ namespace Downloader
             var maxSpeedPerChunk = MaximumBytesPerSecond / ChunkCount;
             ChunkCount = Math.Max(1, ChunkCount);
             MaximumBytesPerSecond = Math.Max(0, MaximumBytesPerSecond);
-            BufferBlockSize = (int)Math.Min(Math.Max(maxSpeedPerChunk, MinimumBufferBlockSize), BufferBlockSize);
+            BufferBlockSize = (int)Math.Min(Math.Max(maxSpeedPerChunk, BufferBlockSize), BufferBlockSize);
         }
     }
 }

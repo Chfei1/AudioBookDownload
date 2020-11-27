@@ -1,0 +1,13 @@
+E:\源码\DownloadMp3\DownLoadMP3\bin\Release\netcoreapp3.1\DownLoadMP3.deps.json
+E:\源码\DownloadMp3\DownLoadMP3\bin\Release\netcoreapp3.1\DownLoadMP3.dll
+E:\源码\DownloadMp3\DownLoadMP3\bin\Release\netcoreapp3.1\DownLoadMP3.pdb
+E:\源码\DownloadMp3\DownLoadMP3\bin\Release\netcoreapp3.1\CsharpHttpHelperCore.dll
+E:\源码\DownloadMp3\DownLoadMP3\bin\Release\netcoreapp3.1\Downloader.dll
+E:\源码\DownloadMp3\DownLoadMP3\bin\Release\netcoreapp3.1\Downloader.pdb
+E:\源码\DownloadMp3\DownLoadMP3\obj\Release\netcoreapp3.1\DownLoadMP3.csprojAssemblyReference.cache
+E:\源码\DownloadMp3\DownLoadMP3\obj\Release\netcoreapp3.1\DownLoadMP3.AssemblyInfoInputs.cache
+E:\源码\DownloadMp3\DownLoadMP3\obj\Release\netcoreapp3.1\DownLoadMP3.AssemblyInfo.cs
+E:\源码\DownloadMp3\DownLoadMP3\obj\Release\netcoreapp3.1\DownLoadMP3.csproj.CoreCompileInputs.cache
+E:\源码\DownloadMp3\DownLoadMP3\obj\Release\netcoreapp3.1\DownLoadMP3.csproj.CopyComplete
+E:\源码\DownloadMp3\DownLoadMP3\obj\Release\netcoreapp3.1\DownLoadMP3.dll
+E:\源码\DownloadMp3\DownLoadMP3\obj\Release\netcoreapp3.1\DownLoadMP3.pdb

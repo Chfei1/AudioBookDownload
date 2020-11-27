@@ -62,17 +62,21 @@ var app = new Vue({
         }
     }
 });
-app.getproggress(DownloadStatus.None);
-//declare let signalR;
-//const connection = new signalR.HubConnectionBuilder()
-//    .withUrl("/msghub")
-//    .configureLogging(signalR.LogLevel.Information)
-//    .build();
-//connection.on("msg", (item: BookSeriesItemModel) => {
-//    var list = app.book.seriesList.filter(a => a.id == item.id);
-//    if (list.length > 0) {
-//        list[0].progress = item.progress;
-//    }
-//});
-//connection.start();
+var connection = new signalR.HubConnectionBuilder()
+    .withUrl("/msghub")
+    .configureLogging(signalR.LogLevel.Information)
+    .build();
+connection.on("downing", function (item) {
+    var list = app.book.seriesList.filter(function (a) { return a.id == item.id; });
+    if (list.length > 0) {
+        list[0].progress = item.progress;
+    }
+});
+connection.on("finished", function (item) {
+    var list = app.book.seriesList.filter(function (a) { return a.id == item.id; });
+    if (list.length > 0) {
+        list[0].progress = item.progress;
+    }
+});
+connection.start();
 //# sourceMappingURL=main.js.map

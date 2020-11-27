@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Downloader;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace DownLoadMP3
 {
@@ -50,7 +51,7 @@ namespace DownLoadMP3
         }
 
 
-        public void DownloadBook(BookSeriesItem bookSeries, string Savepath, Action<DownloadService, DownloadProgressChangedEventArgs> TotalProgressChanged = null, Action<DownloadService, AsyncCompletedEventArgs> FileDownloadFinished = null)
+        public async Task DownloadBook(BookSeriesItem bookSeries, string Savepath, Action<DownloadService, DownloadProgressChangedEventArgs> TotalProgressChanged = null, Action<DownloadService, AsyncCompletedEventArgs> FileDownloadFinished = null)
         {
             string IpTemp = "145.213.{0}.{1}";
             Random ra = new Random();
@@ -64,7 +65,7 @@ namespace DownLoadMP3
                 {
                     string url = match.Groups["url"].Value;
                     string extension = Path.GetExtension(url);
-                    _downLoadMp3(url, bookSeries.Name + extension, Savepath, Ip, TotalProgressChanged, FileDownloadFinished);
+                    await _downLoadMp3(url, bookSeries.Name + extension, Savepath, Ip, TotalProgressChanged, FileDownloadFinished);
                     //byte[] bytes = _downLoadMp3(url, Ip);
                     //if (bytes != null)
                     //{
@@ -112,7 +113,7 @@ namespace DownLoadMP3
         }
 
 
-        private async void  _downLoadMp3(string url, string name, string Savepath, string Ip, Action<DownloadService, DownloadProgressChangedEventArgs> TotalProgressChanged, Action<DownloadService, AsyncCompletedEventArgs> FileDownloadFinished)
+        private async Task _downLoadMp3(string url, string name, string Savepath, string Ip, Action<DownloadService, DownloadProgressChangedEventArgs> TotalProgressChanged, Action<DownloadService, AsyncCompletedEventArgs> FileDownloadFinished)
         {
             try
             {
